@@ -1,5 +1,5 @@
 Django
 crispy-bootstrap5
-crispy-forms
+django-crispy-forms
 gunicorn
 psycopg2
