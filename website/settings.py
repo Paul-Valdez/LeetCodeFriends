@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4a$w159v2!-djw&kt!2aug19!m!)eg5$o$es%_7he!apteliu$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['leetcodefriends.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'leetcodefriends.onrender.com']
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'whitenoise.runserver_nostatic',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -56,8 +57,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -132,18 +133,29 @@ USE_TZ = True
 
 # Static files configuration
 
-STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
+STATIC_HOST = 'https://xsqouwxwkxlryycnvoac.supabase.co/storage/v1/object/public/static' if not DEBUG else ""
+#STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
 STATIC_URL = STATIC_HOST + "/static/"
 #STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# Following settings only make sense on production and may break development environments.
+if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
+    # in your application directory on Render.
+    #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # Turn on WhiteNoise storage backend that takes care of compressing static files
+    # and creating unique names for each version so they can safely be cached forever.
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+'''
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+'''
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

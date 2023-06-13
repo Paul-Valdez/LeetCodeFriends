@@ -12,8 +12,8 @@ urlpatterns = [
     path('sign-up', views.sign_up, name='sign_up'),
     path('create-post', views.create_post, name='create_post')
 ]
-#'''
+'''
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#'''
+'''
