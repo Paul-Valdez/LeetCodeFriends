@@ -1,0 +1,16 @@
+# static.yaml
+
+- path: /static
+  headers:
+    Cache-Control: public, max-age=31536000
+  include:
+    - "**/*.css"
+    - "**/*.js"
+    - "**/*.jpg"
+    - "**/*.jpeg"
+    - "**/*.png"
+    - "**/*.gif"
+    - "**/*.svg"
+    - "**/*.ico"
+  cacheControl:
+    immutable: true
