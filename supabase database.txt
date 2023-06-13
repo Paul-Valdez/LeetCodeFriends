@@ -1,0 +1,8 @@
+supabase.com
+LeetCode Friends
+
+host: db.xsqouwxwkxlryycnvoac.supabase.co
+database name: postgres
+port: 5432
+user: postgres
+db password: lWAlQIjqUfLL1osB
