@@ -3,3 +3,5 @@ crispy-bootstrap5
 django-crispy-forms
 gunicorn
 psycopg2
+whitenoise
+whitenoise[brotli]
