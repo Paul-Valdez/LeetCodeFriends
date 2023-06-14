@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
-#from django.http import HttpResponse
+from django.http import HttpResponse
 from .forms import RegisterForm, PostForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User, Group
 from .models import Post
+import requests
+
+website_name = 'LeetCode Friends'
 
 @login_required(login_url='/login')
 def home(request):
@@ -64,3 +67,6 @@ def sign_up(request):
         form = RegisterForm()
 
     return render(request, 'registration/sign_up.html', {"form": form})
+
+def index(request):
+    return render(request, 'main/index.html', {'website_name':'LeetCode Friends'})

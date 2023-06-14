@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import psycopg2, os
+import psycopg2, os 
+#supabase
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4a$w159v2!-djw&kt!2aug19!m!)eg5$o$es%_7he!apteliu$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['127.0.0.1', 'leetcodefriends.onrender.com']
@@ -133,7 +134,7 @@ USE_TZ = True
 
 # Static files configuration
 
-STATIC_HOST = 'https://xsqouwxwkxlryycnvoac.supabase.co/storage/v1/object/public/static' if not DEBUG else ""
+STATIC_HOST = 'https://xsqouwxwkxlryycnvoac.supabase.co/storage/v1/object/public/static' #if not DEBUG else ""
 #STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
 STATIC_URL = STATIC_HOST + "/static/"
 #STATIC_URL = 'static/'
@@ -155,6 +156,13 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+
+SUPABASE_URL = '<your-supabase-url>'
+SUPABASE_PUBLIC_KEY = '<your-public-key>'
+SUPABASE_SECRET_KEY = '<your-secret-key>'
+
+supabase_client = supabase.create_client(SUPABASE_URL, SUPABASE_PUBLIC_KEY, SUPABASE_SECRET_KEY)
 '''
 
 # Default primary key field type

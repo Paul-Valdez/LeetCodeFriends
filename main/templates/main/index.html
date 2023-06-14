@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    
+    <title>LeetCode Friends</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+          crossorigin="anonymous">
+    
+    <style>
+      #banner {
+        height: 360px;
+        width: 100%;
+        object-fit: cover;
+      }
+    </style>
+    <!--
+    <style>
+      h1 {
+        font-size: 40px;
+        font-family: Roboto;
+        font-weight: normal;
+        color: rgb(0,150,250);
+        text-align: center
+      }
+
+      #banner {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        
+      }
+
+      h2 {
+        font-family: Roboto;
+        font-size: 32px;
+        color: rgb(170,150,180);
+        text-align: center;
+        font-weight: normal;
+      }
+
+      .bodytext {
+        font-family: Roboto;
+        color: rgb(170,150,180);
+      }
+
+      #container {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+    </style>
+    -->
+  </head>
+  
+  <body>
+    
+    {% include 'main/nav.html' %}    
+
+    <div class="container">
+      <!--  <div style="text-align:center;">  -->          
+        
+      <img class="img-fluid mt-2" id="banner" src="{% static 'images/banner.jpg' %}">
+      
+      <h2 class="text-center mt-2 mb-4">About {{website_name}}</h2>
+      
+      <p> Hello, you can add LeetCode users as friends and track each other's progress here.
+      </p>
+      
+      <h2 class="text-center mt-2 mb-4">Users:</h2>
+
+      <!-- display users -->
+      <div>
+        {% for user in users %} <!-- Flask templating syntax -->
+          {% include 'useritem.html' %}
+        {% endfor %}
+      </div>
+      
+      <div class="text-center">
+        <p>TODO - Show the features here</p>
+
+        <!-- Contact link; email 
+        <a href="mailto:paulvaldezx@gmail.com" type="button" class="btn btn-outline-primary float-right align-middle">Contact Us</a>
+        -->
+        
+        <!--
+        <p class="mt-4">LeetCode Friends, 2023</p>
+          -->
+      </div>
+      
+    </div>
+
+    {% include 'main/footer.html' %}
+  </body>
+</html>
