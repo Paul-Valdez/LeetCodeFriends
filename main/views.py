@@ -7,6 +7,7 @@ from django.contrib.auth.models import User, Group
 from .models import Post
 import requests
 
+
 website_name = 'LeetCode Friends'
 
 @login_required(login_url='/login')
@@ -70,3 +71,6 @@ def sign_up(request):
 
 def index(request):
     return render(request, 'main/index.html', {'website_name':'LeetCode Friends'})
+
+def profile(request):
+    return render(request, 'main/profile.html', {'website_name':'LeetCode Friends'})

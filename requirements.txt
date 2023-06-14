@@ -1,8 +1,11 @@
-Django
-crispy-bootstrap5
-django-crispy-forms
-gunicorn
-psycopg2
-whitenoise
-whitenoise[brotli]
-supabase-py
+Django                  #web framework for Python
+crispy-bootstrap5       #webpage styling
+django-crispy-forms     #webpage styling for forms
+gunicorn                #'Green Unicorn' is a Python WSGI HTTP Server 
+psycopg2                #PostgreSQL database adapter for Python
+whitenoise              #allows web app to serve its own static files
+whitenoise[brotli]      #lossless data compression algorithm
+supabase-py             '''Python client library for Supabase.com :
+                        interact with Postgres database, listen to database
+                        changes, invoke Deno Edge Functions, build login and user management functionality, 
+                        and manage large files.'''

@@ -1,0 +1,66 @@
+{% extends 'main/base.html' %}
+{% block title %}LeetCode Friends | {{user}}{% endblock %} 
+{% block content %}
+
+<html>
+
+  <head>
+    
+    <script src="https://cdn.tryretool.com/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div style="height: 850px; width: 100%;" id="container"></div>
+
+    <script>
+      var rt = window.retool.RetoolDashboard(
+        document.getElementById('container'),
+        'https://paulvaldez.retool.com/embedded/public/2b2ef8fd-82ec-4546-b6f5-a6bf62e9b5fa',
+        { initialTab: 'posts' }
+      );
+    </script>
+
+  </body>
+
+</html>
+
+<!--
+  <h1><span style="color: blue;">{{user.username}}</span>'s profile</h1>
+
+
+<div id="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <div>
+
+    <script>
+      var rt = window.retool.RetoolDashboard(
+        document.getElementById('container'),
+        'https://paulvaldez.retool.com/embedded/public/2b2ef8fd-82ec-4546-b6f5-a6bf62e9b5fa'
+      );
+    </script>
+
+  </div>
+</div>
+
+<iframe src="https://paulvaldez.retool.com/embedded/public/73addb22-0814-4ed3-9e83-47a803303587">
+
+
+</iframe>
+  <iframe src="https://paulvaldez.retool.com/embedded/public/73addb22-0814-4ed3-9e83-47a803303587" 
+  width="120%" height="850 px">
+-->
+
+<!--Initialize and Embed the Retool App-->
+<!--
+<div style="height: 800px; width: 100%;" id="container"></div>
+<script>
+  var rt = window.retool.RetoolDashboard(
+    document.getElementById('container'),
+    'https://paulvaldez.retool.com/embedded/public/73addb22-0814-4ed3-9e83-47a803303587'
+  );
+</script>
+-->
+
+
+{% endblock %}
+
