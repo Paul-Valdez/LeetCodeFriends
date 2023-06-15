@@ -4,11 +4,13 @@ from .forms import RegisterForm, PostForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User, Group
-from .models import Post
+from .models import Post, UserProfile, LCGlobalData
 import requests
+from . import models
 
 
 website_name = 'LeetCode Friends'
+
 
 @login_required(login_url='/login')
 def home(request):
@@ -69,8 +71,67 @@ def sign_up(request):
 
     return render(request, 'registration/sign_up.html', {"form": form})
 
+
 def index(request):
     return render(request, 'main/index.html', {'website_name':'LeetCode Friends'})
 
+
 def profile(request):
     return render(request, 'main/profile.html', {'website_name':'LeetCode Friends'})
+
+
+def fetch_and_store_lc_user_data(request, username):
+    url = 'https://leetcode-stats-api.herokuapp.com/{username}'
+
+    response = requests.get(url)
+    data = response.json()
+
+    # Check if the API response indicates an error (user does not exist on LeetCode)
+    if 'status' in data and 'message' in data and data['status'] == 'error' and data['message'] == 'user does not exist':
+        return HttpResponse('LeetCode user does not exist.')
+
+    # Process the data and save it to the database    
+    # Create or update the UserProfile model instance
+    UserProfile.objects.update_or_create(
+        username = data['username'],
+        totalSolved = data['totalSolved'],
+        #totalQuestions = data['totalQuestions'],
+        easySolved = data['easySolved'],
+        #totalEasy = data['totalEasy'],
+        mediumSolved = data['mediumSolved'],
+        #totalMedium = data['totalMedium'],
+        hardSolved = data['hardSolved'],
+        #totalHard = data['totalHard'],
+        acceptanceRate = data['acceptanceRate'],
+        ranking = data['ranking'],
+        contributionPoints = data['contributionPoints'],
+        reputation = data['reputation'],
+    )
+
+    return HttpResponse('Data fetched and stored successfully!')
+
+
+def update_lc_global_data(request):
+    url = 'https://leetcode-stats-api.herokuapp.com/paulvaldez'
+
+    response = requests.get(url)
+    data = response.json()
+
+    totalQuestions = data['totalQuestions']
+    totalEasy = data['totalEasy']
+    totalMedium = data['totalMedium']
+    totalHard = data['totalHard']
+
+    lc_global_data, _ = models.LCGlobalData.objects.update_or_create(
+        id=1,
+        totalQuestions = totalQuestions,
+        totalEasy = totalEasy,
+        totalMedium = totalMedium,
+        totalHard = totalHard,
+    )
+
+    return HttpResponse('LCGlobalData fetched and stored successfully!'
+                        + '<br><br>Total questions: %d' % totalQuestions
+                        + '<br>Easy: %d' % totalEasy
+                        + '<br>Medium: %d' % totalMedium
+                        + '<br>Hard: %d' % totalHard )

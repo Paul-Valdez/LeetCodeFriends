@@ -6,6 +6,6 @@ psycopg2                #PostgreSQL database adapter for Python
 whitenoise              #allows web app to serve its own static files
 whitenoise[brotli]      #lossless data compression algorithm
 supabase-py             '''Python client library for Supabase.com :
-                        interact with Postgres database, listen to database
-                        changes, invoke Deno Edge Functions, build login and user management functionality, 
+                        interact with Postgres database, listen to database changes, 
+                        invoke Deno Edge Functions, build login and user management functionality, 
                         and manage large files.'''

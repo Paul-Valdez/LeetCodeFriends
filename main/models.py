@@ -12,3 +12,29 @@ class Post(models.Model):
     def __str__(self):
         return self.title + "\n" + self.description
 
+
+class UserProfile(models.Model):
+    # Define fields to store the necessary data
+    username = models.CharField(max_length=255, unique=True)
+    totalSolved = models.IntegerField()
+    easySolved = models.IntegerField()
+    mediumSolved = models.IntegerField()
+    hardSolved = models.IntegerField()
+    acceptanceRate = models.FloatField()
+    ranking = models.IntegerField()
+    contributionPoints = models.IntegerField()
+    reputation = models.IntegerField()
+
+    def __str__(self):
+        return self.username
+
+
+class LCGlobalData(models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
+    totalQuestions = models.IntegerField(default=-1)
+    totalEasy = models.IntegerField(default=-1)
+    totalMedium = models.IntegerField(default=-1)
+    totalHard = models.IntegerField(default=-1)
+
+    def __str__(self):
+        return self.id
