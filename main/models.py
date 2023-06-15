@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 class Post(models.Model):
@@ -28,13 +29,15 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.username
 
-
+#
 class LCGlobalData(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    #id = models.PositiveIntegerField(primary_key=True)
+    timestamp = models.DateTimeField(default=timezone.now)
     totalQuestions = models.IntegerField(default=-1)
     totalEasy = models.IntegerField(default=-1)
     totalMedium = models.IntegerField(default=-1)
     totalHard = models.IntegerField(default=-1)
-
+'''
     def __str__(self):
         return self.id
+#'''

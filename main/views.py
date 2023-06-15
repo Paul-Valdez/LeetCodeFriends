@@ -7,7 +7,7 @@ from django.contrib.auth.models import User, Group
 from .models import Post, UserProfile, LCGlobalData
 import requests
 from . import models
-
+#from django.urls import url
 
 website_name = 'LeetCode Friends'
 
@@ -73,6 +73,7 @@ def sign_up(request):
 
 
 def index(request):
+    update_lc_global_data()
     return render(request, 'main/index.html', {'website_name':'LeetCode Friends'})
 
 
@@ -110,8 +111,8 @@ def fetch_and_store_lc_user_data(request, username):
 
     return HttpResponse('Data fetched and stored successfully!')
 
-
-def update_lc_global_data(request):
+#'''
+def update_lc_global_data():
     url = 'https://leetcode-stats-api.herokuapp.com/paulvaldez'
 
     response = requests.get(url)
@@ -122,16 +123,28 @@ def update_lc_global_data(request):
     totalMedium = data['totalMedium']
     totalHard = data['totalHard']
 
-    lc_global_data, _ = models.LCGlobalData.objects.update_or_create(
-        id=1,
-        totalQuestions = totalQuestions,
-        totalEasy = totalEasy,
-        totalMedium = totalMedium,
-        totalHard = totalHard,
-    )
+    # Fetch the latest record from the database
+    latest_lc_global_data = models.LCGlobalData.objects.latest('id')
 
-    return HttpResponse('LCGlobalData fetched and stored successfully!'
-                        + '<br><br>Total questions: %d' % totalQuestions
-                        + '<br>Easy: %d' % totalEasy
-                        + '<br>Medium: %d' % totalMedium
-                        + '<br>Hard: %d' % totalHard )
+    if (
+        latest_lc_global_data.totalQuestions != totalQuestions or
+        latest_lc_global_data.totalEasy != totalEasy or
+        latest_lc_global_data.totalMedium != totalMedium or
+        latest_lc_global_data.totalHard != totalHard
+    ):
+        # Create a new record with a new ID
+        new_lc_global_data = models.LCGlobalData.objects.create(
+            totalQuestions=totalQuestions,
+            totalEasy=totalEasy,
+            totalMedium=totalMedium,
+            totalHard=totalHard,
+        )
+
+        return HttpResponse('New LCGlobalData entry created!'
+                            + '<br><br>Total questions: %d' % totalQuestions
+                            + '<br>Easy: %d' % totalEasy
+                            + '<br>Medium: %d' % totalMedium
+                            + '<br>Hard: %d' % totalHard)
+    else:
+        return HttpResponse('No changes in LCGlobalData')
+#'''

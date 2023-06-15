@@ -16,6 +16,9 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+    #from main.views import update_lc_global_data
+    #update_lc_global_data(repeat=60*60*24, repeat_until=None)
+
 
 if __name__ == '__main__':
     main()
