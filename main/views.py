@@ -82,19 +82,20 @@ def profile(request):
 
 
 def fetch_and_store_lc_user_data(request, username):
-    url = 'https://leetcode-stats-api.herokuapp.com/{username}'
+    url = 'https://leetcode-stats-api.herokuapp.com/{}'.format(username)
 
     response = requests.get(url)
     data = response.json()
 
     # Check if the API response indicates an error (user does not exist on LeetCode)
-    if 'status' in data and 'message' in data and data['status'] == 'error' and data['message'] == 'user does not exist':
-        return HttpResponse('LeetCode user does not exist.')
+    if data['status'] == 'error' and data['message'] == 'user does not exist':
+        return HttpResponse("LeetCode user '<span style='color: red;'>{}</span>' does not exist.".format(username))
+
 
     # Process the data and save it to the database    
     # Create or update the UserProfile model instance
     UserProfile.objects.update_or_create(
-        username = data['username'],
+        username = username,
         totalSolved = data['totalSolved'],
         #totalQuestions = data['totalQuestions'],
         easySolved = data['easySolved'],
@@ -111,7 +112,7 @@ def fetch_and_store_lc_user_data(request, username):
 
     return HttpResponse('Data fetched and stored successfully!')
 
-#'''
+
 def update_lc_global_data():
     url = 'https://leetcode-stats-api.herokuapp.com/paulvaldez'
 
@@ -126,6 +127,7 @@ def update_lc_global_data():
     # Fetch the latest record from the database
     latest_lc_global_data = models.LCGlobalData.objects.latest('id')
 
+    # if new data is different from last entry, create new ID with updated data
     if (
         latest_lc_global_data.totalQuestions != totalQuestions or
         latest_lc_global_data.totalEasy != totalEasy or
@@ -139,7 +141,7 @@ def update_lc_global_data():
             totalMedium=totalMedium,
             totalHard=totalHard,
         )
-
+'''
         return HttpResponse('New LCGlobalData entry created!'
                             + '<br><br>Total questions: %d' % totalQuestions
                             + '<br>Easy: %d' % totalEasy
@@ -147,4 +149,4 @@ def update_lc_global_data():
                             + '<br>Hard: %d' % totalHard)
     else:
         return HttpResponse('No changes in LCGlobalData')
-#'''
+'''

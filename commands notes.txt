@@ -1,0 +1,7 @@
+-running development server:
+python manage.py runserver
+
+-submitting models.py data to database:
+python manage.py makemigrations
+python manage.py migrate
+

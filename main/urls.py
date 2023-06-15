@@ -16,7 +16,7 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path('profile', views.profile, name='profile'),
     path('lcu/<str:username>/', views.fetch_and_store_lc_user_data, name='lcu'),
-    path('lcgd/', views.update_lc_global_data, name='lcgd'),
+    #   path('lcgd/', views.update_lc_global_data, name='lcgd'),
 ]
 
 '''

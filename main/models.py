@@ -25,6 +25,7 @@ class UserProfile(models.Model):
     ranking = models.IntegerField()
     contributionPoints = models.IntegerField()
     reputation = models.IntegerField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.username
