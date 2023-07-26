@@ -19,6 +19,10 @@
         object-fit: cover;
       }
     </style>
+
+    <!--for retool embeds-->
+    <script src="https://cdn.tryretool.com/embed.js"></script>
+
     <!--
     <style>
       h1 {
@@ -71,16 +75,19 @@
       <p> Hello, you can add LeetCode users as friends and track each other's progress here.
       </p>
       
-      <h2 class="text-center mt-2 mb-4">Users:</h2>
+      
+
+
 
       <!-- display users -->
-      <div>
+      <div style="display:none">
+        <h2 class="text-center mt-2 mb-4">Users:</h2>
         {% for user in users %} <!-- Flask templating syntax -->
           {% include 'useritem.html' %}
         {% endfor %}
       </div>
       
-      <div class="text-center">
+      <div class="text-center" style="display:none">
         <p>TODO - Show the features here</p>
 
         <!-- Contact link; email 
@@ -93,6 +100,28 @@
       </div>
       
     </div>
+
+    
+    <!--retool demo embed
+    <div style="height: 850px; width: 100%;" id="container"></div>
+    
+    <div style="text-align: center;"></div>
+    <iframe src="https://paulvaldez.retool.com/embedded/public/c652b2c8-c681-4cda-b74b-024f295dc00a" 
+    width="100%" height="800px"></iframe>
+    </div>-->
+
+    <!--retool demo embed-->
+    <div style="text-align: center;">
+      <div style="margin-left: 800px;"><font size="1 ">*Note this table uses fake data for demonstration purposes.</font></div>
+      <iframe src="https://paulvaldez.retool.com/embedded/public/c652b2c8-c681-4cda-b74b-024f295dc00a" 
+        width="60%" height="485px"></iframe>
+        
+        
+    </div>
+
+    
+
+
 
     {% include 'main/footer.html' %}
   </body>

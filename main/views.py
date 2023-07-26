@@ -73,7 +73,7 @@ def sign_up(request):
 
 
 def index(request):
-    update_lc_global_data()
+    #update_lc_global_data()
     return render(request, 'main/index.html', {'website_name':'LeetCode Friends'})
 
 
@@ -97,13 +97,9 @@ def fetch_and_store_lc_user_data(request, username):
     UserProfile.objects.update_or_create(
         username = username,
         totalSolved = data['totalSolved'],
-        #totalQuestions = data['totalQuestions'],
         easySolved = data['easySolved'],
-        #totalEasy = data['totalEasy'],
         mediumSolved = data['mediumSolved'],
-        #totalMedium = data['totalMedium'],
         hardSolved = data['hardSolved'],
-        #totalHard = data['totalHard'],
         acceptanceRate = data['acceptanceRate'],
         ranking = data['ranking'],
         contributionPoints = data['contributionPoints'],
