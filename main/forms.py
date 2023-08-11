@@ -16,3 +16,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ["title", "description"]
+
+
+class UserSearchForm(forms.Form):
+    username = forms.CharField(max_length=150, label="Enter a LeetCode Username")

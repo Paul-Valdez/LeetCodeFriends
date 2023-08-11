@@ -14,6 +14,7 @@ from pathlib import Path
 import psycopg2, os
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -139,7 +140,21 @@ STATIC_HOST = 'https://xsqouwxwkxlryycnvoac.supabase.co/storage/v1/object/public
 STATIC_URL = STATIC_HOST + "/static/"
 #STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static') #commented to allow offline static files
+
+# The absolute filesystem path to the directory containing your static files.
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]   #added to allow offline static files
+
+
+
+# Define the base directory of your project
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# URL prefix for static files
+#STATIC_URL = '/static/'
+
+
 #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Following settings only make sense on production and may break development environments.
