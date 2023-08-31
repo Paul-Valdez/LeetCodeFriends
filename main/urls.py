@@ -20,6 +20,7 @@ urlpatterns = [
     path('FAQ/', views.FAQ, name='FAQ'),
     path('follow/', views.follow, name='follow'),
     path('leetcode_user_search/', views.user_search_view, name='leetcode_user_search'),
+    path('userprofile/', views.userprofile, name='userprofile'),
 ]
 
 '''

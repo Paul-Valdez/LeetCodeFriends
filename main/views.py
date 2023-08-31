@@ -218,3 +218,8 @@ def user_search_view(request):
         return render(request, 'main/leetcode_user_search.html', {'username': username, 'external_html': external_html})
 
     return render(request, 'main/leetcode_user_search.html')
+
+
+def userprofile(request):
+
+    return render(request, 'main/userprofile.html', {'website_name':'LeetCode Friends'})
