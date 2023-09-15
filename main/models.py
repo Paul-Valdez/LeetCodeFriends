@@ -26,8 +26,6 @@ class UserProfile(models.Model):
     contributionPoints = models.IntegerField()
     reputation = models.IntegerField()
     created_at = models.DateTimeField(default=timezone.now)
-    location = models.CharField(max_length=255, null=True)
-    phoneNumber = models.IntegerField(unique=True, null=True)
 
     def __str__(self):
         return self.username
