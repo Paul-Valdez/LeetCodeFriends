@@ -1,224 +1,62 @@
+
+
 {% extends 'main/base.html' %}
-{% block title %}LeetCode Friends | Frequently Asked Questions{% endblock %} 
+{% block title %}LeetCode Friends | Frequently Ask Questions{% endblock %} 
 {% block content %}
-
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif
-    }
-
-    body {
-        background-image: linear-gradient(to right top, #9AF6FB, #7096F8);
-        min-height: 100vh
-    }
-
-    .wrapper {
-        max-width: 760px;
-        margin: 50px auto;
-        padding: 40px 20px
-    }
-
-    .wrapper .search {
-        border: 1px solid #c8c8c8;
-        overflow: hidden;
-        border-radius: 25px;
-        padding: 0 10px;
-        margin: 15px 0 20px;
-        transition: all 0.3s
-    }
-
-    .wrapper .search:hover,
-    .wrapper .search:focus-within {
-        border: 1px solid transparent;
-        box-shadow: 2px 5px 8px #1f1f1f10, 0px -4px 5px #1f1f1f10
-    }
-
-    .wrapper .search .form-control {
-        box-shadow: none;
-        outline: none;
-        border: none
-    }
-
-    .wrapper .search .form-control:focus::placeholder {
-        opacity: 0
-    }
-
-    .wrapper .accordion-button {
-        font-size: 0.9rem;
-        font-weight: 500
-    }
-
-    .wrapper .accordion-button:hover {
-        background-color: #f8f8f8
-    }
-
-    .wrapper .accordion-button:focus {
-        box-shadow: none
-    }
-
-    .wrapper .accordion-button::after {
-        background-size: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid #c8c8c8;
-        background-position: center center;
-        border-radius: 50%
-    }
-
-    .wrapper .accordion-button:not(.collapsed) {
-        color: #000;
-        background-color: #f7f7f7;
-        font-weight: 600;
-        border-bottom: 1px solid #ddd !important
-    }
-
-    .accordion-button:not(.collapsed)::after {
-        border-color: #1E88E5
-    }
-
-    .wrapper .accordion-button.collapsed {
-        border-bottom: 1px solid #ddd !important
-    }
-
-    .wrapper .accordion-collapse.show {
-        border-bottom: 1px solid #ddd !important
-    }
-
-    .wrapper .accordion-collapse {
-        background-color: #eaf3fa
-    }
-
-    .wrapper .accordion-collapse ul li {
-        line-height: 2rem;
-        width: 100%;
-        padding: 0.5rem 1.3rem
-    }
-
-    .wrapper .accordion-collapse ul li:hover {
-        background-color: #c9e7ff
-    }
-
-    .wrapper .accordion-collapse ul li a {
-        text-decoration: none;
-        color: #333;
-        font-size: 0.85rem;
-        font-weight: 400;
-        display: block
-    }
-
-    .wrapper .accordion-collapse ul li:hover a {
-        color: #222
-    }
-
-    @media (max-width: 777px) {
-        .wrapper {
-            margin: 50px 20px
-        }
-    }
-
-    @media (max-width: 365px) {
-        .wrapper {
-            margin: 50px 10px
-        }
-
-        .w-75 {
-            width: 90% !important
-        }
-    }
+    
 </style>
 
+
 <div class="wrapper bg-white rounded shadow">
-    <div class="h2 text-center fw-bold">BBBootstrap</div>
+    <div class="h2 text-center fw-bold">Bootstrap</div>
     <div class="h3 text-primary text-center">How can we help you?</div>
     <div class="d-flex justify-content-center">
-        <div class="search w-75 d-flex align-items-center"> <span class="fas fa-search text-dark"></span> <input
-                type="text" class="form-control" placeholder="Describe your issue"> </div>
+        <div class="search w-75 d-flex align-items-center"> <span class="fas fa-search text-dark"></span>
+            <input type="text" class="form-control" placeholder="Describe your issue">
+        </div>
     </div>
-    <div class="accordion accordion-flush border-top border-start border-end" id="myAccordion">
+    <div class="accordion" id="accordionExample">
         <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
-                    aria-controls="flush-collapseOne"> Popular on BBBootstrap </button> </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
-                data-bs-parent="#myAccordion">
-                <div class="accordion-body p-0">
-                    <ul class="list-unstyled m-0">
-                        <li><a href="#">Adding Snippets</a></li>
-                        <li><a href="#">Accessing Color Palette</a></li>
-                        <li><a href="#">Searching Snippets</a></li>
-                        <li><a href="#">How to use online editor tools</a></li>
-                        <li><a href="#">Upgrading Pro</a></li>
-                    </ul>
-                </div>
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                What is LeetCode Friends?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>LeetCode Friends is a website that connects LeetCode users </strong> 
+              by allowing you to track your own and your 
+              friends' problem-solving progress on LeetCode.
             </div>
+          </div>
         </div>
         <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                    aria-controls="flush-collapseTwo"> Know About Pro </button> </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
-                data-bs-parent="#myAccordion">
-                <div class="accordion-body p-0">
-                    <ul class="list-unstyled m-0">
-                        <li><a href="#">How to upgrade to pro</a></li>
-                        <li><a href="#">Benifits of Pro</a></li>
-                        <li><a href="#">Payment methods to get Pro</a></li>
-                    </ul>
-                </div>
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                How do I add friends to my LeetCode Friends list?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Simply just <strong>follow</strong> the people on the LeetCode webpage.
             </div>
+          </div>
         </div>
         <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
-                    aria-controls="flush-collapseThree"> BBBootstrap Tools </button> </h2>
-            <div id="flush-collapseThree" class="accordion-collapse collapse border-0"
-                aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
-                <div class="accordion-body p-0">
-                    <ul class="list-unstyled m-0">
-                        <li><a href="#">How to use Pro Online Editor</a></li>
-                        <li><a href="#">Know Gradient generator</a></li>
-                        <li><a href="#">Using Beautifier</a></li>
-                    </ul>
-                </div>
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                How often is the progress updated on LeetCode Friends?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>It is up-to-date.</strong> Every time the user opens the LeetCode Friends webpage.
             </div>
+          </div>
         </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false"
-                    aria-controls="flush-collapseFour"> Download Snippets </button> </h2>
-            <div id="flush-collapseFour" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
-                data-bs-parent="#myAccordion">
-                <div class="accordion-body p-0">
-                    <ul class="list-unstyled m-0">
-                        <li><a href="#">How to download snippets</a></li>
-                        <li><a href="#">Donate to Author</a></li>
-                        <li><a href="#">Donation methods</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false"
-                    aria-controls="flush-collapseFive"> BBBootstrap Icons </button> </h2>
-            <div id="flush-collapseFive" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
-                data-bs-parent="#myAccordion">
-                <div class="accordion-body p-0">
-                    <ul class="list-unstyled m-0">
-                        <li><a href="#">Adding icons to snippets</a></li>
-                        <li><a href="#">Fontawesome Icons</a></li>
-                        <li><a href="#">Material Design</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
+      </div>
+
             <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0"
                     type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false"
                     aria-controls="flush-collapseSix"> Policy & copyrights </button> </h2>
@@ -226,8 +64,8 @@
                 data-bs-parent="#myAccordion">
                 <div class="accordion-body p-0">
                     <ul class="list-unstyled m-0">
-                        <li><a href="#">BBBootstrap Guidelines</a></li>
-                        <li><a href="#">BBBootstrap Policies</a></li>
+                        <li><a href="#">LeetCodeFriends Guidelines</a></li>
+                        <li><a href="#">LeetCodeFriends Policies</a></li>
                         <li><a href="#">Copyright and right management</a></li>
                     </ul>
                 </div>
@@ -236,5 +74,5 @@
     </div>
 </div>
 
-
 {% endblock %}
+

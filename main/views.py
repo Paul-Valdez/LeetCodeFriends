@@ -220,6 +220,13 @@ def user_search_view(request):
     return render(request, 'main/leetcode_user_search.html')
 
 
-def userprofile(request):
+def about(request):
+    return render(request, 'main/about.html', {'website_name':'LeetCode Friends'})
 
+
+def userprofile(request):
     return render(request, 'main/userprofile.html', {'website_name':'LeetCode Friends'})
+
+
+def editprofile(request):
+    return render(request, 'main/editprofile.html', {'website_name':'LeetCode Friends'})
