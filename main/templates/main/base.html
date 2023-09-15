@@ -33,7 +33,7 @@
 
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="/home">Home</a>
+              <a class="nav-link" href="/">Main</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -46,7 +46,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/">Main</a>
+              <a class="nav-link" href="/home">Home</a>
             </li>
           </ul>
 
@@ -55,7 +55,7 @@
         <div>
           <ul class="navbar-nav">
             {% if user.is_authenticated %}
-            <span class="navbar-text">Logged in as <span style="color: blue;">{{user.username}}</span> | </span>
+            <span class="navbar-text">Logged in as <a href='/userprofile'><span style="color: blue;">{{user.username}}</span></a> | </span>
             <li class="nav-item">
               <a class="nav-link" href="/logout">Logout</a>
             </li>
